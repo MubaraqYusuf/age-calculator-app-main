@@ -1,0 +1,348 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colors */
+  --purple-500: hsl(259, 100%, 65%);
+  --red-400: hsl(0, 100%, 67%);
+  --white: hsl(0, 100%, 100%);
+  --grey-100: hsl(0, 0%, 94%);
+  --grey-200: hsl(0, 0%, 86%);
+  --grey-500: hsl(0, 1%, 44%);
+  --black: hsl(0, 0%, 0%);
+  
+  /* Typography */
+  --font-family: 'Poppins', sans-serif;
+  --input-font-size: 2rem;
+  --result-font-size: 3.5rem;
+  --mobile-result-font-size: 2.5rem;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--grey-100);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  line-height: 1.5;
+}
+
+.container {
+  width: 100%;
+  max-width: 840px;
+}
+
+.calculator-card {
+  background: var(--white);
+  border-radius: 24px 24px 200px 24px;
+  padding: 3rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.calculator-card:hover {
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+}
+
+.input-section {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.input-group {
+  flex: 1;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--grey-500);
+  letter-spacing: 0.25em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.input-field {
+  font-family: var(--font-family);
+  font-size: var(--input-font-size);
+  font-weight: 700;
+  color: var(--black);
+  border: 1px solid var(--grey-200);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  background: var(--white);
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.input-field:hover {
+  border-color: var(--purple-500);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--purple-500);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.input-field.error {
+  border-color: var(--red-400);
+}
+
+.input-field.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.input-group.error .input-label {
+  color: var(--red-400);
+}
+
+.error-message {
+  font-size: 0.875rem;
+  color: var(--red-400);
+  margin-top: 0.5rem;
+  font-style: italic;
+  min-height: 1.25rem;
+  transition: opacity 0.2s ease;
+}
+
+.submit-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.divider {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--grey-200);
+  z-index: 1;
+}
+
+.submit-btn {
+  position: relative;
+  z-index: 2;
+  background: var(--purple-500);
+  border: none;
+  border-radius: 50%;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+}
+
+.submit-btn:hover {
+  background: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+  transition: transform 0.1s ease;
+}
+
+.submit-btn svg {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.2s ease;
+}
+
+.submit-btn:hover svg {
+  transform: scale(1.1);
+}
+
+.results-section {
+  margin-top: 2rem;
+}
+
+.result-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.result-number {
+  font-size: var(--result-font-size);
+  font-weight: 800;
+  font-style: italic;
+  color: var(--purple-500);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  transition: all 0.3s ease;
+}
+
+.result-unit {
+  font-size: var(--result-font-size);
+  font-weight: 800;
+  font-style: italic;
+  color: var(--black);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Loading state */
+.calculating .result-number {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+/* Animation classes */
+.animate-in {
+  animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.counter-animation {
+  animation: pulse 0.1s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .calculator-card {
+    border-radius: 24px 24px 100px 24px;
+    padding: 2rem 1.5rem;
+  }
+  
+  .input-section {
+    gap: 1rem;
+  }
+  
+  .input-field {
+    font-size: 1.25rem;
+    padding: 0.75rem;
+  }
+  
+  .submit-section {
+    margin: 4rem 0 2rem 0;
+  }
+  
+  .submit-btn {
+    width: 64px;
+    height: 64px;
+    margin-left: auto;
+    margin-right: 1.5rem;
+  }
+  
+  .submit-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .divider {
+    right: 140px;
+  }
+  
+  .result-number,
+  .result-unit {
+    font-size: var(--mobile-result-font-size);
+  }
+}
+
+@media (max-width: 480px) {
+  .input-section {
+    gap: 1rem;
+  }
+  
+  .input-group {
+    min-width: 80px;
+  }
+  
+  .input-field {
+    font-size: 1.125rem;
+    padding: 0.625rem;
+  }
+  
+  .result-number,
+  .result-unit {
+    font-size: 2rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .submit-btn,
+  .result-number,
+  .input-field {
+    transition: none;
+  }
+  
+  .animate-in {
+    animation: none;
+  }
+  
+  .counter-animation {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .calculator-card {
+    border: 2px solid var(--black);
+  }
+  
+  .input-field {
+    border-width: 2px;
+  }
+  
+  .submit-btn {
+    border: 2px solid var(--white);
+  }
+}
+
+.attribution { 
+    font-size: 11px;
+    text-align: center; 
+    color: white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px 0;
+    background: black;
+}
+.attribution a {
+    color: hsl(0, 0%, 100%); 
+}
