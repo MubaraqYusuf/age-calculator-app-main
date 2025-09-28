@@ -11,7 +11,7 @@ A simple and interactive web application that calculates a user's age in years, 
 ## Desktop View
 ![desktop-design](https://github.com/user-attachments/assets/59b5fef6-e312-4a73-a42c-fb32037fb012)
 
-## Desktop View
+## Mobile View
 ![mobile-design](https://github.com/user-attachments/assets/7ec4fd27-0a77-4ab5-af17-de818f2c1593)
 
 ## Getting Started
