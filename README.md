@@ -1,6 +1,6 @@
 # Age Calculator App
 
-A simple and interactive web application that calculates a user's age in years, months, and days based on their date of birth. This project is a solution to the [Frontend Mentor Age Calculator App Challenge](https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q).
+A simple and interactive web application that calculates a user's age in years, months, and days based on their date of birth.
 
 ## Features
 - Input fields for day, month, and year
