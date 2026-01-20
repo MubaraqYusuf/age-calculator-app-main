@@ -1,11 +1,14 @@
+/* Global reset to remove default browser spacing
+   and ensure consistent box sizing */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Root-level CSS variables for colors and typography */
 :root {
-  /* Colors */
+  /* Color palette */
   --purple-500: hsl(259, 100%, 65%);
   --red-400: hsl(0, 100%, 67%);
   --white: hsl(0, 100%, 100%);
@@ -14,13 +17,14 @@
   --grey-500: hsl(0, 1%, 44%);
   --black: hsl(0, 0%, 0%);
   
-  /* Typography */
+  /* Typography settings */
   --font-family: 'Poppins', sans-serif;
   --input-font-size: 2rem;
   --result-font-size: 3.5rem;
   --mobile-result-font-size: 2.5rem;
 }
 
+/* Base page styling and layout centering */
 body {
   font-family: var(--font-family);
   background-color: var(--grey-100);
@@ -32,11 +36,13 @@ body {
   line-height: 1.5;
 }
 
+/* Main container width constraint */
 .container {
   width: 100%;
   max-width: 840px;
 }
 
+/* Card styling for the calculator */
 .calculator-card {
   background: var(--white);
   border-radius: 24px 24px 200px 24px;
@@ -45,10 +51,12 @@ body {
   transition: box-shadow 0.3s ease;
 }
 
+/* Elevated shadow on hover for depth */
 .calculator-card:hover {
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
 }
 
+/* Layout for input fields */
 .input-section {
   display: flex;
   gap: 2rem;
@@ -56,6 +64,7 @@ body {
   flex-wrap: wrap;
 }
 
+/* Wrapper for each input + label + error */
 .input-group {
   flex: 1;
   min-width: 100px;
@@ -63,6 +72,7 @@ body {
   flex-direction: column;
 }
 
+/* Input label styling */
 .input-label {
   font-size: 0.875rem;
   font-weight: 700;
@@ -73,6 +83,7 @@ body {
   transition: color 0.2s ease;
 }
 
+/* Input field base styling */
 .input-field {
   font-family: var(--font-family);
   font-size: var(--input-font-size);
@@ -86,28 +97,34 @@ body {
   width: 100%;
 }
 
+/* Highlight input border on hover */
 .input-field:hover {
   border-color: var(--purple-500);
 }
 
+/* Focus state for accessibility and clarity */
 .input-field:focus {
   outline: none;
   border-color: var(--purple-500);
   box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
 }
 
+/* Error state for input fields */
 .input-field.error {
   border-color: var(--red-400);
 }
 
+/* Error focus state */
 .input-field.error:focus {
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
 
+/* Error label color */
 .input-group.error .input-label {
   color: var(--red-400);
 }
 
+/* Error message text styling */
 .error-message {
   font-size: 0.875rem;
   color: var(--red-400);
@@ -117,6 +134,7 @@ body {
   transition: opacity 0.2s ease;
 }
 
+/* Submit button section with divider line */
 .submit-section {
   position: relative;
   display: flex;
@@ -125,6 +143,7 @@ body {
   margin: 2rem 0;
 }
 
+/* Horizontal divider behind submit button */
 .divider {
   position: absolute;
   top: 50%;
@@ -135,6 +154,7 @@ body {
   z-index: 1;
 }
 
+/* Circular submit button styling */
 .submit-btn {
   position: relative;
   z-index: 2;
@@ -152,31 +172,37 @@ body {
   box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
 }
 
+/* Hover effect for submit button */
 .submit-btn:hover {
   background: var(--black);
   transform: translateY(-2px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
 }
 
+/* Click feedback */
 .submit-btn:active {
   transform: translateY(0);
   transition: transform 0.1s ease;
 }
 
+/* Icon sizing inside submit button */
 .submit-btn svg {
   width: 32px;
   height: 32px;
   transition: transform 0.2s ease;
 }
 
+/* Icon zoom on hover */
 .submit-btn:hover svg {
   transform: scale(1.1);
 }
 
+/* Results container spacing */
 .results-section {
   margin-top: 2rem;
 }
 
+/* Layout for each result line */
 .result-item {
   display: flex;
   align-items: baseline;
@@ -184,6 +210,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
+/* Highlighted numeric result */
 .result-number {
   font-size: var(--result-font-size);
   font-weight: 800;
@@ -194,6 +221,7 @@ body {
   transition: all 0.3s ease;
 }
 
+/* Result unit label (years, months, days) */
 .result-unit {
   font-size: var(--result-font-size);
   font-weight: 800;
@@ -203,17 +231,18 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* Loading state */
+/* Visual feedback during calculation */
 .calculating .result-number {
   opacity: 0.5;
   transform: scale(0.95);
 }
 
-/* Animation classes */
+/* Slide-in animation for results */
 .animate-in {
   animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Slide-in keyframes */
 @keyframes slideInUp {
   from {
     opacity: 0;
@@ -225,10 +254,12 @@ body {
   }
 }
 
+/* Pulse animation for number updates */
 .counter-animation {
   animation: pulse 0.1s ease-in-out;
 }
 
+/* Pulse keyframes */
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
@@ -238,7 +269,7 @@ body {
   }
 }
 
-/* Mobile responsive */
+/* Tablet and mobile responsiveness */
 @media (max-width: 768px) {
   .calculator-card {
     border-radius: 24px 24px 100px 24px;
@@ -280,6 +311,7 @@ body {
   }
 }
 
+/* Small mobile adjustments */
 @media (max-width: 480px) {
   .input-section {
     gap: 1rem;
@@ -300,7 +332,7 @@ body {
   }
 }
 
-/* Accessibility improvements */
+/* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
   .submit-btn,
   .result-number,
@@ -332,17 +364,20 @@ body {
   }
 }
 
+/* Footer attribution styling */
 .attribution { 
-    font-size: 11px;
-    text-align: center; 
-    color: white;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 10px 0;
-    background: black;
+  font-size: 11px;
+  text-align: center; 
+  color: white;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px 0;
+  background: black;
 }
+
+/* Attribution link color */
 .attribution a {
-    color: hsl(0, 0%, 100%); 
+  color: hsl(0, 0%, 100%); 
 }
