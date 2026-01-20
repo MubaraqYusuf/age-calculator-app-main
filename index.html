@@ -1,67 +1,145 @@
 <!DOCTYPE html>
+<!-- Declares HTML5 document type -->
 <html lang="en">
 <head>
+  <!-- Character encoding -->
   <meta charset="UTF-8">
+
+  <!-- Ensures proper scaling on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon for browser tab -->
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+
+  <!-- Page title -->
   <title>Age calculator app</title>
+
+  <!-- Google Font: Poppins with multiple weights and italics -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,800&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Main content container -->
   <main class="container">
+    <!-- Card wrapper for the calculator -->
     <div class="calculator-card">
+
+      <!-- Age input form -->
       <form class="input-section" id="ageForm">
+        
+        <!-- Day input -->
         <div class="input-group">
+          <!-- Label for day field -->
           <label for="day" class="input-label">DAY</label>
-          <input type="number" id="day" class="input-field" placeholder="DD" min="1" max="31">
+
+          <!-- Numeric input for day -->
+          <input 
+            type="number" 
+            id="day" 
+            class="input-field" 
+            placeholder="DD" 
+            min="1" 
+            max="31"
+          >
+
+          <!-- Validation error message for day -->
           <span class="error-message" id="dayError"></span>
         </div>
         
+        <!-- Month input -->
         <div class="input-group">
           <label for="month" class="input-label">MONTH</label>
-          <input type="number" id="month" class="input-field" placeholder="MM" min="1" max="12">
+
+          <!-- Numeric input for month -->
+          <input 
+            type="number" 
+            id="month" 
+            class="input-field" 
+            placeholder="MM" 
+            min="1" 
+            max="12"
+          >
+
+          <!-- Validation error message for month -->
           <span class="error-message" id="monthError"></span>
         </div>
         
+        <!-- Year input -->
         <div class="input-group">
           <label for="year" class="input-label">YEAR</label>
-          <input type="number" id="year" class="input-field" placeholder="YYYY" min="1900">
+
+          <!-- Numeric input for year -->
+          <input 
+            type="number" 
+            id="year" 
+            class="input-field" 
+            placeholder="YYYY" 
+            min="1900"
+          >
+
+          <!-- Validation error message for year -->
           <span class="error-message" id="yearError"></span>
         </div>
         
+        <!-- Submit button section -->
         <div class="submit-section">
+          <!-- Decorative divider line -->
           <div class="divider"></div>
+
+          <!-- Submit button with accessible label -->
           <button type="submit" class="submit-btn" aria-label="Calculate age">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Arrow icon (SVG) -->
+            <svg 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path 
+                d="M7 17L17 7M17 7H7M17 7V17" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"
+              />
             </svg>
           </button>
         </div>
       </form>
       
+      <!-- Results display section -->
       <div class="results-section">
+        <!-- Years result -->
         <div class="result-item">
           <span class="result-number" id="yearsResult">--</span>
           <span class="result-unit">Years</span>
         </div>
+
+        <!-- Months result -->
         <div class="result-item">
           <span class="result-number" id="monthsResult">--</span>
           <span class="result-unit">Months</span>
         </div>
+
+        <!-- Days result -->
         <div class="result-item">
           <span class="result-number" id="daysResult">--</span>
           <span class="result-unit">Days</span>
         </div>
       </div>
+
     </div>
   </main>
   
+  <!-- JavaScript file for age calculation logic -->
   <script src="script.js"></script>
 
+  <!-- Footer attribution -->
   <div class="attribution">
     Coded by <a href="#">sunshine_wrlld</a>.
   </div>
 </body>
-
 </html>
